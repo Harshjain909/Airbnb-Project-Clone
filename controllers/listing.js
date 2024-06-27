@@ -11,15 +11,24 @@ module.exports.renderNewForm = (req,res)=>{
     res.render("./listings/new.ejs");
 }
 
-module.exports.showDetails = async(req,res,next)=>{ 
-    const {id} = req.params;
-    const placedata = await Listing.findById(id).populate({path:"reviews", populate :{path:"author"}}).populate("owner");  //reviews ko populate krna hoga kyuki id h
-    if(!placedata){
-      req.flash("error","Listing was deleted or does not exist");
-      res.redirect("/listings");
+module.exports.showDetails = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const placedata = await Listing.findById(id).populate({
+            path: "reviews",
+            populate: { path: "author" }
+        }).populate("owner");  // Populate owner here
+
+        if (!placedata) {
+            req.flash("error", "Listing was deleted or does not exist");
+            return res.redirect("/listings");
+        }  
+        res.render("./listings/show.ejs", { placedata });
+    } catch (err) {
+        next(err);
     }
-    res.render("./listings/show.ejs",{placedata});
-}
+};
+
 
 module.exports.addNewListing = async(req,res,next)=>{   
     let url = req.file.path;
