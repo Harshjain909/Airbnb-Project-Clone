@@ -6,7 +6,7 @@
         <h1 class="card-title" style="border: none;"><%=placedata.title%></h1>   
         <img class="card-img-top" src="<%=placedata.image.url%>" alt="Card image cap">
         <div class="card-body" style="padding: 0;">
-          <p class="card-text"><b> Owner:</b> <%=placedata.owner.username%></p>
+<p class="card-text"><b> Owner:</b> <% if (placedata.owner) { %> <%= placedata.owner.username %> <% } else { %> Unknown <% } %></p>
           <p class="card-text"><%=placedata.description%></p>
           <p class="card-text"><b>Price:&nbsp;&nbsp;</b>&#8377;<%=placedata.price.toLocaleString("en-IN")%></p>
           <p class="card-text"><b>Location:&nbsp;&nbsp;</b><%=placedata.location%></p>
