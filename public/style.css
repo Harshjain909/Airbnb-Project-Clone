@@ -1,0 +1,106 @@
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+                                                /* navbar */
+.navbar{
+    height: 5rem;
+    position: sticky!important;
+    top:0px;
+    z-index: 100;
+    background-color: white;
+    font-size: 1.5rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
+.navbar i{
+    color: #fe424d;
+    font-size:2.5rem;
+    margin-left:1rem;
+}
+.nav-link{
+    color:black !important;
+}
+
+                            /* footer */
+.footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: ghostwhite;
+    line-height: 2rem;
+    width: 100vw;
+}
+.footer a{
+    text-decoration: none;
+    color: black;
+    margin: 0.3rem;
+}
+.footer a:hover{
+    text-decoration: underline;
+}
+
+                               /* cards */
+.allcards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.anchorlink{
+    height:29rem;
+    width:26rem;
+    margin:1.5rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+}
+.allcards img{
+    height: 24rem;
+    width: 26rem;
+    border-radius: 1rem;
+}
+.allcards img:hover{
+    opacity: 0.9;
+    transition: 0.2s ease-in;
+    box-shadow: 0 0 2px black;
+    border: 1px solid black;
+}
+
+.cardtext{
+   color: black;
+   padding-left: 0.5rem;
+   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.card p{
+    margin:0;
+}
+.card{
+    width: 31rem;
+    height: 46rem !important; 
+}
+.card img{
+    height: 25rem;
+}
+                                       /*  Reviews */
+.allreviews{
+    display: flex;
+    flex-wrap: wrap;
+}
+.review{
+    border: 1px solid rgba(35, 35, 35, 0.263);
+    width:20vw;
+    margin-right:2rem;
+    margin-bottom:2rem;
+    margin-left:0;
+    padding-left: 1rem;
+    border-radius: 2rem;
+}
+.ratings{
+    display: inline-block;
+    padding-left: 0;
+}

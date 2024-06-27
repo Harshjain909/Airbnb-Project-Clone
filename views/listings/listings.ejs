@@ -1,0 +1,19 @@
+<% layout("/layouts/boilerplate") %>
+
+<body style="font-size: 1.3rem;">
+    <div class="allcards">
+    <%for(let place of places){%>
+        <a href="/listings/<%=place._id%>" class="anchorlink">
+        <div class="cards">
+        <img class="cardimg" src="<%=place.image.url%>" alt="Cardimage">
+        <div class="cardbody" style="width:320px;">
+          <p class="cardtext" ><%=place.title%>
+          <br>
+          &#8377;<%= place.price.toLocaleString("en-IN")%>/night
+         </p>
+        </div>
+      </div>
+    </a>
+      <%}%>  
+    </div>
+</body>

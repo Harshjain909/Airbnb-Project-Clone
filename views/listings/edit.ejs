@@ -1,0 +1,54 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="row col-8 offset-2"> 
+    <h1 style="font-size: 2rem;"  class="pt-3 mb-3">Edit Locale</h1>
+
+    <form class="needs-validation" novalidate  action="/listings/<%=placedata._id%>?_method=PUT" method="post" enctype="multipart/form-data">
+      <div class="mb-3"> 
+        <label for="title" class="form-label">Title</label>
+        <input value="<%=placedata.title%>" name="title" type="text" class="form-control" id="title" required>
+        <div class="invalid-feedback">Title should be valid</div>
+        <div class="valid-feedback">looks good!</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="description" type="text" class="form-control" id="description" required><%=placedata.description%></textarea>
+        <div class="invalid-feedback">Description should be short</div>
+        <div class="valid-feedback">looks good!</div>     
+      </div>
+
+      <img  src="<%=placedata.image.url %>" style="height: 250px; width: 300px;">
+
+      <div class="mb-3">
+        <label for="url" class="form-label">Upload New Image</label>
+        <input name="image" type="file" class="form-control" id="url" value="<%=placedata.image%>" required>
+      </div>
+       
+     <div class="row">     
+        <div class="mb-3 col-md-3"> 
+        <label for="price" class="form-label">Price</label>
+          <input  name="price" type="number" id="price" class="form-control" value="<%=placedata.price%>" required>  
+          <div class="invalid-feedback">Price should be greater than 0</div>
+          <div class="valid-feedback">looks good!</div>
+        </div>
+
+      <div class="mb-3 col-md-9">
+        <label for="country" class="form-label">Country</label>
+        <input value="<%=placedata.country%>" name="country" type="text" id="country" class="form-control" required>
+        <div class="invalid-feedback">Country should exist</div>
+        <div class="valid-feedback">looks good!</div>
+      </div>
+   </div>
+
+
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input value="<%=placedata.location%>" name="location" type="text" class="form-control" id="location" required>
+        <div class="invalid-feedback">invalid location</div>
+        <div class="valid-feedback">Location seems Awesome!</div>
+      </div>
+           <button class="btn btn-dark">Edit</button> 
+  </form> 
+ </div>
+</body>
