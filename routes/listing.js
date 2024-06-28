@@ -1,11 +1,7 @@
 const express = require("express");
 const router = express.Router({mergeParams:true});
-
+const ExpressError = require("../data initializer/ExpressError.js"); 
 const {validateListing,Isloggedin,authorization} = require("./middleware.js");
-
-const multer  = require('multer');
-const {storage} = require("../cloudConfig.js");
-const upload = multer({storage});
 
 const listingController = require("../controllers/listing.js");
 
@@ -19,15 +15,15 @@ router.get("/new",Isloggedin,listingController.renderNewForm);
 router.get("/:id",listingController.showDetails);
 
 // Add new listing Route
-router.post("/",Isloggedin,upload.single('image'),validateListing,listingController.addNewListing);
+router.post("/",Isloggedin,validateListing,listingController.addNewListing);
 
 //Edit route
-router.get("/:id/edit",Isloggedin,authorization,listingController.editListing);
+router.get("/:id/edit",Isloggedin,listingController.editListing);
 
 //Update route
-router.put("/:id",validateListing, Isloggedin,authorization,upload.single('image'), listingController.updateListing);
+router.put("/:id",validateListing, Isloggedin, listingController.updateListing);
 
 // Delete route
-router.delete("/:id",Isloggedin,authorization, listingController.deleteListing);
+router.delete("/:id",Isloggedin, listingController.deleteListing);
 
 module.exports = router;

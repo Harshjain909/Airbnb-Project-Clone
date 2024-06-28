@@ -1,9 +1,11 @@
 <% layout("/layouts/boilerplate") %>
+
 <body>
     <div class="row col-8 offset-2"> 
+
     <h1 style="font-size: 2rem;"  class="pt-3 mb-3">Edit Locale</h1>
 
-    <form class="needs-validation" novalidate  action="/listings/<%=placedata._id%>?_method=PUT" method="post" enctype="multipart/form-data">
+    <form class="needs-validation" novalidate  action="/listings/<%=placedata._id%>?_method=PUT" method="post">
       <div class="mb-3"> 
         <label for="title" class="form-label">Title</label>
         <input value="<%=placedata.title%>" name="title" type="text" class="form-control" id="title" required>
@@ -18,11 +20,11 @@
         <div class="valid-feedback">looks good!</div>     
       </div>
 
-      <img  src="<%=placedata.image.url %>" style="height: 250px; width: 300px;">
+      <img  src="<%=placedata.image%>" style="height: 250px; width: 300px;">
 
       <div class="mb-3">
         <label for="url" class="form-label">Upload New Image</label>
-        <input name="image" type="file" class="form-control" id="url" value="<%=placedata.image%>" required>
+        <input name="image" type="text" class="form-control" id="url" value="<%=placedata.image%>" required>
       </div>
        
      <div class="row">     

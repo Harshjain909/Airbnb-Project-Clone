@@ -1,10 +1,11 @@
+
 const Joi = require("joi");
 
 const listingSchemaValidation = Joi.object({
     title: Joi.string().required(),
     description: Joi.string().required(),
     image: Joi.string().allow(""),           
-    price: Joi.number().required().min(0),   
+    price: Joi.number().required().min(0),  
     country: Joi.string().required(),
     location: Joi.string().required()
 }).required();

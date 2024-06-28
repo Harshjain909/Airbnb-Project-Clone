@@ -4,28 +4,26 @@
     <div class="col-6 offset-4">
      <div class="card" style="border: none;">       
         <h1 class="card-title" style="border: none;"><%=placedata.title%></h1>   
-        <img class="card-img-top" src="<%=placedata.image.url%>" alt="Card image cap">
+        <img class="card-img-top" src="<%=placedata.image%>" alt="Card image cap">
         <div class="card-body" style="padding: 0;">
-<p class="card-text"><b> Owner:</b> <% if (placedata.owner) { %> <%= placedata.owner.username %> <% } else { %> Unknown <% } %></p>
           <p class="card-text"><%=placedata.description%></p>
           <p class="card-text"><b>Price:&nbsp;&nbsp;</b>&#8377;<%=placedata.price.toLocaleString("en-IN")%></p>
           <p class="card-text"><b>Location:&nbsp;&nbsp;</b><%=placedata.location%></p>
           <p class="card-text"><b>Country:&nbsp;&nbsp;</b><%=placedata.country%></p>
 
-          <% if (userdata && placedata.owner && placedata.owner.equals(userdata._id)) { %>
-    <span class="row mb-3 mt-3">
-        <div class="col-3">
-            <form method="get" action="/listings/<%=placedata._id%>/edit">
-                <button type="submit" class="btn btn-warning">Edit</button>
-            </form>
-        </div>
-        <div class="col-3">
-            <form method="post" action="/listings/<%=placedata._id%>?_method=DELETE">
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-        </div>
-    </span>
-<% } %>
+          <span class="row mb-3 mt-3">
+            <div class="col-3">
+              <form method="get" action="/listings/<%=placedata._id%>/edit">
+                <button class="btn btn-dark">Edit</button>
+              </form>
+            </div>
+            <div class="col-3">
+              <form method="post" action="/listings/<%=placedata._id%>?_method=DELETE">
+                <button class="btn btn-danger">Delete</button>
+              </form>
+            </div>
+          </span>
+
 
           <hr>
         </div>
@@ -37,7 +35,7 @@
 <div class="row mb-3 mt-3 " >
 
   <div class="col-6 offset-3">
-    <%if(userdata){%>  
+    <%if(userdata){%>   
     <h2 class="col-6">Leave a Review</h2>
     <form class="mb-3 mt-3 needs-validation"  method="post" action="/listings/<%=placedata._id%>/reviews" novalidate>
       <label for="rating" class="form-label mb-1">Choose rating</label>
@@ -71,7 +69,7 @@
     <div class="allreviews">
       <% for(let review of placedata.reviews) { %>
         <div class="review">
-          <p class="name" style="margin-top: 1rem;"> @<%=review.author.username%> </p>
+          <p class="name" style="margin-top: 1rem;"> Owner </p>
           <ul class="ratings">
             <% for(let j = 0; j < 5; j++) { %>
               <% if(j < review.rating) { %>
@@ -83,11 +81,11 @@
           </ul>
           <p class="comment" style="padding-right: 1rem;"><%= review.comment %></p>
 
-          <%if(userdata && review.author._id.equals(userdata._id)){%>
+
           <form method="post" action="/listings/<%=placedata._id%>/reviews/<%=review._id%>?_method=DELETE">
             <button class="btn btn-secondary mb-3">Delete</button>
           </form>
-          <% } %>
+    
 
         </div>
       <% } %>

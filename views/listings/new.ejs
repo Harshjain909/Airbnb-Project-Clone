@@ -1,10 +1,9 @@
 <% layout("/layouts/boilerplate") %>
-
 <body >
     <div class="row col-8 offset-2" style="font-size: 1.5rem;"> 
     <h1 style="font-size: 2rem;"  class="pt-3 mb-3">Introduce a fresh locale</h1>
 
-    <form method="post" action="/listings" class="needs-validation" novalidate enctype="multipart/form-data">
+    <form method="post" action="/listings" class="needs-validation" novalidate>
       <div class="mb-3"> 
         <label for="title" class="form-label">Title</label>
         <input placeholder="Beautiful Location Need Title" name="title" type="text" class="form-control" id="title" required>
@@ -20,12 +19,12 @@
       </div>
 
       <div class="mb-3">
-        <label for="url" class="form-label">Upload Image</label>
-        <input placeholder="Enter Image URL" name="image" type="file" class="form-control" id="url" required>
+        <label for="url" class="form-label">Upload Image Url</label>
+        <input placeholder="Enter Image URL" name="image" type="text" class="form-control" id="url" required>
       </div>
        
-     <div class="row">   
-        <div class="mb-3 col-md-3"> 
+     <div class="row">  
+        <div class="mb-3 col-md-3">
         <label for="price" class="form-label">Price</label>
         <input type="number" placeholder="Price &#8377;" name="price" id="price" class="form-control" required>
           <div class="invalid-feedback">Price should be greater than 0</div>

@@ -1,8 +1,15 @@
+
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const app = express();
 
+async function main(){
+    await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
+}
+main().then(()=>{console.log("connection successfull");}).catch((err)=>{console.log(err)});
+
+//Database loading
 const listingSchema = mongoose.Schema({
     title: {
         type: String,
@@ -13,8 +20,7 @@ const listingSchema = mongoose.Schema({
         required: true,
     },
     image: {
-        url: String,
-        filename: String, 
+        type: String,
     },
     price: {
         type: Number,
@@ -32,21 +38,16 @@ const listingSchema = mongoose.Schema({
     reviews: [             
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref:"Review",                     
+            ref:"Review",                    
         }
     ],
-    owner : {
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"User"
-    }
 });
 
 const Listing = mongoose.model("Listing",listingSchema);
 const info = require("./data.js");
 let initializedata = async() => {
-    data = info.data.map((obj)=> ({...obj,owner:'667cf52ddc16b01c81c05d87'})); 
     await Listing.deleteMany({}); 
-    await Listing.insertMany(data);
+    await Listing.insertMany(info.data);
 }
 (async () => {
     await initializedata();

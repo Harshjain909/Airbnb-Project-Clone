@@ -5,7 +5,7 @@
     <%for(let place of places){%>
         <a href="/listings/<%=place._id%>" class="anchorlink">
         <div class="cards">
-        <img class="cardimg" src="<%=place.image.url%>" alt="Cardimage">
+        <img class="cardimg" src="<%=place.image%>" alt="Cardimage">
         <div class="cardbody" style="width:320px;">
           <p class="cardtext" ><%=place.title%>
           <br>
